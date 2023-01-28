@@ -9,3 +9,8 @@ for(var i=0;i<items.length;i++)
 {
     items[i].style.fontFamily="bold"
 }
+var li=document.getElementsByTagName("li")
+for(var i=0;i<li.length;i++)
+{
+    li[i].style.color="yellow"
+}
