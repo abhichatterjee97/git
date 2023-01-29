@@ -25,3 +25,31 @@ for(var i=0;i<odd.length;i++)
 {
     items2[i].style.background="green"
 }
+var itemlist=document.querySelector("#items")
+itemlist.parentNode.style.background="yellow"
+itemlist.parentElement.style.font="bold"
+itemlist.children[2].style.background="blue"
+console.log(itemlist.childNodes)
+console.log(itemlist.firstChild)
+itemlist.firstElementChild.style.color="black"
+
+itemlist.lastElementChild.textContent="hello"
+console.log(itemlist.lastChild)
+console.log(itemlist.nextSibling)
+console.log(itemlist.nextElementSibling)
+console.log(itemlist.previousSibling)
+itemlist.previousElementSibling.style.color="green"
+var newdiv=document.createElement("div")
+newdiv.className="hello"
+newdiv.id="hello1"
+newdiv.setAttribute("title","hello div")
+var newdivtext=document.createTextNode("hello world")
+newdiv.appendChild(newdivtext)
+var container=document.querySelector("header .container")
+var h1=document.querySelector("header h1")
+container.insertBefore(newdiv,h1)
+var h=document.getElementById("header-title")
+h.textContent="Hello world item lister"
+var a=document.querySelector(".list-group")
+a.firstChild.textContent="Hello world item 1"
+
