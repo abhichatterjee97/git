@@ -138,12 +138,25 @@ function shows(myobj)
     var deletebtn=document.createElement("input")
     deletebtn.type="button"
     deletebtn.value="delete"
+  var editbtn=document.createElement("input")
+    editbtn.type="button"
+    editbtn.value="edit"
     deletebtn.onclick=() =>
     {
       localStorage.removeItem(myobj.input)
       parent.removeChild(child)
     }
+    editbtn.onclick=() =>
+    {
+      document.getElementById("name").value=myobj.input;
+      document.getElementById("email").value=myobj.input1;
+      document.getElementById("phone").value=myobj.input2;
+      localStorage.removeItem(myobj.input)
+      parent.removeChild(child)
+    }
     child.appendChild(deletebtn)
+    parent.appendChild(child)
+  child.appendChild(editbtn)
     parent.appendChild(child)
 }
 
