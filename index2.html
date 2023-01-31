@@ -130,14 +130,22 @@ var myobj={
 var a=JSON.stringify(myobj)
 localStorage.setItem(myobj.input, a);
 
-shows(myobj)
-}
 function shows(myobj)
 {
   var parent=document.getElementById("users")
-  parent.innerHTML=parent.innerHTML+"<li>"+myobj.input+" "+myobj.input1+" "+myobj.input2+"</li>";
+  var child=document.createElement("li")
+  child.textContent=myobj.input+" "+myobj.input1+" "+myobj.input2;
+    var deletebtn=document.createElement("input")
+    deletebtn.type="button"
+    deletebtn.value="delete"
+    deletebtn.onclick=() =>
+    {
+      localStorage.removeItem(myobj.input)
+      parent.removeChild(child)
+    }
+    child.appendChild(deletebtn)
+    parent.appendChild(child)
 }
-
 
 
     </script>
