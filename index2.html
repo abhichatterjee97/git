@@ -116,13 +116,22 @@ header {
     </section>
     
 
-    <script>function Login()
-      {
-      var input = document.getElementById('name').value;
-      localStorage.setItem('name', input);
-      var input1 = document.getElementById('email').value;
-      localStorage.setItem('name', input);
-      localStorage.setItem('email', input1);
-      }</script>
+    <script>
+      function Login()
+{
+var input = document.getElementById('name').value;
+localStorage.setItem('name', input);
+var input1 = document.getElementById('email').value;
+var myobj={
+  name:input,
+  email:input1
+}
+var a=JSON.stringify(myobj)
+localStorage.setItem('myinfo', a);
+localStorage.setItem('name', input);
+localStorage.setItem('email', input1);
+}
+
+    </script>
   </body>
 </html>
