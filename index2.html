@@ -91,7 +91,7 @@ header {
     </header>
 
     <section class="container">
-      <form id="my-form">
+      <form id="my-form" onsubmit="Login(event)">
         <h1>Add User</h1>
         <div class="msg"></div>
         <div>
@@ -102,35 +102,43 @@ header {
           <label for="email">Email:</label>
           <input type="text" id="email">
         </div>
+         <div>
+          <label for="phone">phone:</label>
+          <input type="text" id="phone">
+        </div>
       
-        <button class="btn" type="submit" onclick="Login()">submit</button>
+        <button class="btn" type="submit">submit</button>
       </form>
 
       <ul id="users"></ul>
 
-      <!-- <ul class="items">
-        <li class="item">Item 1</li>
-        <li class="item">Item 2</li>
-        <li class="item">Item 3</li>
-      </ul> -->
-    </section>
     
 
     <script>
-      function Login()
+      function Login(event)
 {
-var input = document.getElementById('name').value;
-localStorage.setItem('name', input);
-var input1 = document.getElementById('email').value;
+  event.preventDefault();
+var input = event.target.name.value;
+var input1 = event.target.email.value;
+var input2 = event.target.phone.value;
+
 var myobj={
-  name:input,
-  email:input1
+  input,
+  input1,
+  input2
 }
 var a=JSON.stringify(myobj)
-localStorage.setItem('myinfo', a);
-localStorage.setItem('name', input);
-localStorage.setItem('email', input1);
+localStorage.setItem(myobj.input, a);
+
+shows(myobj)
 }
+function shows(myobj)
+{
+  var parent=document.getElementById("users")
+  parent.innerHTML=parent.innerHTML+"<li>"+myobj.input+" "+myobj.input1+" "+myobj.input2+"</li>";
+}
+
+
 
     </script>
   </body>
