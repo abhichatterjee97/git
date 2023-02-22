@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>JS For Beginners</title>
+    <title>Expense Tracker</title>
     <style>
       * {
   margin: 0;
@@ -87,40 +87,47 @@ header {
   </head>
   <body>
     <header>
-      <h1>JS For Beginners</h1>
+      <h1>Expense Tracker</h1>
     </header>
 
     <section class="container">
-      <form id="my-form" onsubmit="Login(event)">
-        <h1>Add User</h1>
+      <form id="my-form" onsubmit="Login()">
+        <h1>Add Expenses</h1>
         <div class="msg"></div>
         <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name">
+          <label for="Amount"> Choose Expense Amount</label>
+          <input type="text" id="Amount">
         </div>
         <div>
-          <label for="email">Email:</label>
-          <input type="text" id="email">
+          <label for="description"> Choose description</label>
+          <input type="text" id="description">
         </div>
-         <div>
-          <label for="phone">phone:</label>
-          <input type="text" id="phone">
+        <div>
+          <label for="Category">Choose a Category</label>
+<select name="Category" id="Category">
+  <option value="Food">Food</option>
+  <option value="Movie">Movie</option>
+  <option value="Fuel" >Fuel</option>
+  <option value="Electricity">Electricity</option>
+</select>
         </div>
       
-        <button class="btn" type="submit">submit</button>
+      
+        <button class="btn" type="submit" >Add expense</button>
       </form>
 
       <ul id="users"></ul>
 
+      
     
 
-    <script>
-      function Login(event)
+    <script >
+      function Login()
 {
-  event.preventDefault();
-var input = event.target.name.value;
-var input1 = event.target.email.value;
-var input2 = event.target.phone.value;
+ event.preventDefault();
+var input = document.getElementById("Amount").value;
+var input1 = document.getElementById("description").value;
+var input2 = document.getElementById("Category").value;
 
 var myobj={
   input,
@@ -130,6 +137,8 @@ var myobj={
 var a=JSON.stringify(myobj)
 localStorage.setItem(myobj.input, a);
 
+shows(myobj)
+}
 function shows(myobj)
 {
   var parent=document.getElementById("users")
@@ -137,10 +146,10 @@ function shows(myobj)
   child.textContent=myobj.input+" "+myobj.input1+" "+myobj.input2;
     var deletebtn=document.createElement("input")
     deletebtn.type="button"
-    deletebtn.value="delete"
-  var editbtn=document.createElement("input")
+    deletebtn.value="delete expense"
+    var editbtn=document.createElement("input")
     editbtn.type="button"
-    editbtn.value="edit"
+    editbtn.value="edit expense"
     deletebtn.onclick=() =>
     {
       localStorage.removeItem(myobj.input)
@@ -148,17 +157,20 @@ function shows(myobj)
     }
     editbtn.onclick=() =>
     {
-      document.getElementById("name").value=myobj.input;
-      document.getElementById("email").value=myobj.input1;
-      document.getElementById("phone").value=myobj.input2;
+      document.getElementById("Amount").value=myobj.input;
+      document.getElementById("description").value=myobj.input1;
+      document.getElementById("Category").value=myobj.input2;
       localStorage.removeItem(myobj.input)
       parent.removeChild(child)
     }
+    
     child.appendChild(deletebtn)
     parent.appendChild(child)
-  child.appendChild(editbtn)
+    child.appendChild(editbtn)
     parent.appendChild(child)
+
 }
+
 
 
     </script>
