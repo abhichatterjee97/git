@@ -168,13 +168,24 @@ function shows(myobj)
       
       
     }
-    editbtn.onclick=() =>
+     editbtn.onclick=() =>
     {
       document.getElementById("name").value=myobj.input;
       document.getElementById("email").value=myobj.input1;
       document.getElementById("phone").value=myobj.input2;
-      localStorage.removeItem(myobj.input)
-      parent.removeChild(child)
+    axios.delete("https://crudcrud.com/api/5fc35de15529477f97d9e9beeb71d45e/appointmentdata/"+myobj._id+"").then((response)=>{
+       parent.removeChild(child)
+
+    }).catch((err)=>{
+      console.log(err);
+    })
+    axios.put("https://crudcrud.com/api/5fc35de15529477f97d9e9beeb71d45e/appointmentdata/"+myobj._id+"",myobj).then((response)=>{
+      
+      console.log(response)
+
+    }).catch((err)=>{
+      console.log(err);
+    })
     }
     child.appendChild(deletebtn)
     parent.appendChild(child)
