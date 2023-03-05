@@ -158,10 +158,15 @@ function shows(myobj)
   var editbtn=document.createElement("input")
     editbtn.type="button"
     editbtn.value="edit"
-    deletebtn.onclick=() =>
-    {
-      localStorage.removeItem(myobj.input)
-      parent.removeChild(child)
+   deletebtn.onclick=() =>
+    {axios.delete("https://crudcrud.com/api/fd3eb32d291e4ce68ab39529ff505a84/appointmentdata/"+myobj._id+"").then((response)=>{
+       parent.removeChild(child)
+
+    }).catch((err)=>{
+      console.log(err);
+    })
+      
+      
     }
     editbtn.onclick=() =>
     {
